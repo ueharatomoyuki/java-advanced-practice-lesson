@@ -1,4 +1,4 @@
-
+package app ;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -40,9 +40,20 @@ public class InputServlet extends HttpServlet {
             throws ServletException, IOException {
         
     	// ここに必要な処理を記述してください。
-
+    	String birthPlace =request.getParameter("birthPlace") ;
+    	String name =request.getParameter("name") ;
+    	String lanugage =request.getParameter("lanugage") ;
+    	String info ="" ;  
+    	if(birthPlace.equals("")) {
+    		info = "名前：名無し、言語：不明、出身地：不明";
+    	}else if(birthPlace.equals("japan")) {
+    		info = "名前：名無し、言語：日本語、出身地：日本。日本の公用語は「日本語」です。";
+    	}else {
+    		info = "名前：名無し、言語：英語、出身地：アメリカ。アメリカの公用語は「英語」です。";
+    	}
 
         // 結果画面へ
+    	request.setAttribute("info",info) ;
         request.getRequestDispatcher("result.jsp").forward(request, response);
     }
 }
