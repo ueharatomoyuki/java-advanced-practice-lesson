@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import app.App;
+import app.CardGameApp;
+import app.ClockApp;
+import app.DartsGameApp;
+import app.GameApp;
+
 /**
  * Servlet implementation class StartAppServlet
  */
@@ -36,10 +42,27 @@ public class StartAppServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		String name = request.getParameter("name") ;
+		String game   = request.getParameter("game") ;
+		String result = "" ;
 		
+		if(game.equals("ge")) {
+			GameApp p = new DartsGameApp() ;
+			result = p.play();
+		}else if(game.equals("to")) {
+			GameApp l = new CardGameApp() ;
+			result = l.play();
+		}else if(game.equals("ti")) {
+			App a = new ClockApp() ;
+			result = a.start(name) ;
+		}else {
+			result = "アプリの実行に失敗しました。" ;
+		}
+		
+		System.out.println(game);
 		System.out.println(name) ;
+		System.out.println(result);
 		
-		request.setAttribute("name", name) ;
+		request.setAttribute("result", result) ;
 		
 		request.getRequestDispatcher("/appStart.jsp").forward(request,response);
 	}
