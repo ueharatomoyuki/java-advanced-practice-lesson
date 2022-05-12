@@ -1,4 +1,4 @@
-package app;
+package jp.co.axiz.app;
 
 public class DartsGameApp extends GameApp{
 	public DartsGameApp(){
@@ -6,9 +6,10 @@ public class DartsGameApp extends GameApp{
 	}
 	
 	public DartsGameApp(String a) {
+		setPlayTime(5) ;
 	}
 	
-	public String play() {
+	protected String play() {
 		String a = "10回投げて合計点を競います。";
 		return a ;
 	}

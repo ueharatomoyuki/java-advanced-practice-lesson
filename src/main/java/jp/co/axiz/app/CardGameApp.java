@@ -1,4 +1,4 @@
-package app;
+package jp.co.axiz.app;
 
 public class CardGameApp extends GameApp{
 	public CardGameApp() {
@@ -6,7 +6,7 @@ public class CardGameApp extends GameApp{
 	}
 	
 	public CardGameApp(String a) {
-		
+		setPlayTime(5) ;
 	}
 	
 	public String play() {
